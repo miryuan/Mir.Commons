@@ -8,6 +8,7 @@
 * 联系方式 ：http://www.ustuy.com/ 
 ******************************************************************/
 using System;
+using System.Text;
 
 namespace Mir.Commons.Format
 {
@@ -16,140 +17,92 @@ namespace Mir.Commons.Format
     /// </summary>
     public static class RMBHelper
     {
-        /// <summary> 
-        /// 转换人民币大小金额 
-        /// </summary> 
-        /// <param name="num">金额</param> 
-        /// <returns>返回大写形式</returns> 
-        public static string CmycurD(decimal num)
+        public static decimal? ParseToDecimalValue(object decimalObj)
         {
-            string str1 = "零壹贰叁肆伍陆柒捌玖";            //0-9所对应的汉字 
-            string str2 = "万仟佰拾亿仟佰拾万仟佰拾元角分"; //数字位所对应的汉字 
-            string str3 = "";    //从原num值中取出的值 
-            string str4 = "";    //数字的字符串形式 
-            string str5 = "";  //人民币大写金额形式 
-            int i;    //循环变量 
-            int j;    //num的值乘以100的字符串长度 
-            string ch1 = "";    //数字的汉语读法 
-            string ch2 = "";    //数字位的汉字读法 
-            int nzero = 0;  //用来计算连续的零值是几个 
-            int temp;            //从原num值中取出的值 
+            if (decimalObj == null) return null;
+            decimal decValue;
+            if (!decimal.TryParse(decimalObj.ToString(), out decValue)) return null;
+            return decValue;
+        }
 
-            num = Math.Round(Math.Abs(num), 2);    //将num取绝对值并四舍五入取2位小数 
-            str4 = ((long)(num * 100)).ToString();        //将num乘100并转换成字符串形式 
-            j = str4.Length;      //找出最高位 
-            if (j > 15) { return "溢出"; }
-            str2 = str2.Substring(15 - j);   //取出对应位数的str2的值。如：200.55,j为5所以str2=佰拾元角分 
+        /// <summary>
+        /// 转中文大写数字
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ConvertNumToZHUpperCase(decimal value)
+        {
+            string[] numList = { "零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
+            string[] unitList = { "分", "角", "元", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟" };
 
-            //循环取出每一位需要转换的值 
-            for (i = 0; i < j; i++)
+            decimal money = value;
+            if (money == 0)
             {
-                str3 = str4.Substring(i, 1);          //取出需转换的某一位的值 
-                temp = Convert.ToInt32(str3);      //转换为数字 
-                if (i != (j - 3) && i != (j - 7) && i != (j - 11) && i != (j - 15))
+                return "零元整";
+            }
+
+            StringBuilder strMoney = new StringBuilder();
+            //只取小数后2位
+
+            string strNum = decimal.Truncate(money * 100).ToString();
+            int len = strNum.Length;
+            int zero = 0;
+            for (int i = 0; i < len; i++)
+            {
+                int num = int.Parse(strNum.Substring(i, 1));
+                int unitNum = len - i - 1;
+
+                if (num == 0)
                 {
-                    //当所取位数不为元、万、亿、万亿上的数字时 
-                    if (str3 == "0")
+                    zero++;
+                    if (unitNum == 2 || unitNum == 6 || unitNum == 10)
                     {
-                        ch1 = "";
-                        ch2 = "";
-                        nzero = nzero + 1;
-                    }
-                    else
-                    {
-                        if (str3 != "0" && nzero != 0)
-                        {
-                            ch1 = "零" + str1.Substring(temp * 1, 1);
-                            ch2 = str2.Substring(i, 1);
-                            nzero = 0;
-                        }
-                        else
-                        {
-                            ch1 = str1.Substring(temp * 1, 1);
-                            ch2 = str2.Substring(i, 1);
-                            nzero = 0;
-                        }
+                        if (unitNum == 2 || zero < 4)
+                            strMoney.Append(unitList[unitNum]);
+                        zero = 0;
                     }
                 }
                 else
                 {
-                    //该位是万亿，亿，万，元位等关键位 
-                    if (str3 != "0" && nzero != 0)
-                    {
-                        ch1 = "零" + str1.Substring(temp * 1, 1);
-                        ch2 = str2.Substring(i, 1);
-                        nzero = 0;
-                    }
-                    else
-                    {
-                        if (str3 != "0" && nzero == 0)
-                        {
-                            ch1 = str1.Substring(temp * 1, 1);
-                            ch2 = str2.Substring(i, 1);
-                            nzero = 0;
-                        }
-                        else
-                        {
-                            if (str3 == "0" && nzero >= 3)
-                            {
-                                ch1 = "";
-                                ch2 = "";
-                                nzero = nzero + 1;
-                            }
-                            else
-                            {
-                                if (j >= 11)
-                                {
-                                    ch1 = "";
-                                    nzero = nzero + 1;
-                                }
-                                else
-                                {
-                                    ch1 = "";
-                                    ch2 = str2.Substring(i, 1);
-                                    nzero = nzero + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-                if (i == (j - 11) || i == (j - 3))
-                {
-                    //如果该位是亿位或元位，则必须写上 
-                    ch2 = str2.Substring(i, 1);
-                }
-                str5 = str5 + ch1 + ch2;
 
-                if (i == j - 1 && str3 == "0")
-                {
-                    //最后一位（分）为0时，加上“整” 
-                    str5 = str5 + "整";
+                    if (zero > 0)
+                    {
+                        strMoney.Append(numList[0]);
+                        zero = 0;
+                    }
+                    strMoney.Append(numList[num]);
+                    strMoney.Append(unitList[unitNum]);
                 }
+
             }
-            if (num == 0)
-            {
-                str5 = "零元整";
-            }
-            return str5;
+            if (zero > 0)
+                strMoney.Append("整");
+
+            return strMoney.ToString();
         }
 
-
-        /// <summary> 
-        /// 转换人民币大小金额  (一个重载，将字符串先转换成数字在调用CmycurD)
-        /// </summary> 
-        /// <param name="num">用户输入的金额，字符串形式未转成decimal</param> 
-        /// <returns></returns> 
-        public static string CmycurD(string numstr)
+        /// <summary>
+        /// 截取指定位数
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static decimal ToFixed(decimal d, int s)
         {
-            try
-            {
-                decimal num = Convert.ToDecimal(numstr);
-                return CmycurD(num);
-            }
-            catch
-            {
-                return "非数字形式！";
-            }
+            decimal sp = Convert.ToDecimal(Math.Pow(10, s));
+            return Math.Truncate(d) + Math.Floor((d - Math.Truncate(d)) * sp) / sp;
+        }
+
+        /// <summary>
+        ///  截取指定位数
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static double ToFixed(double d, int s)
+        {
+            double sp = Math.Pow(10, s);
+            return Math.Truncate(d) + Math.Floor((d - Math.Truncate(d)) * sp) / sp;
         }
     }
 }
