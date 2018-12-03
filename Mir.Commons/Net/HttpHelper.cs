@@ -18,7 +18,7 @@ namespace Mir.Commons.Net
     /// <summary>
     /// Http Post/Get
     /// </summary>
-    public class HttpHelper
+    public static class HttpHelper
     {
         /// <summary>
         /// 发起POST同步请求

@@ -14,7 +14,7 @@ namespace Mir.Commons.Map
     /// <summary>
     /// 空间/坐标帮助类
     /// </summary>
-    public class SpaceUtil
+    public static class SpaceUtil
     {
         public static string BAIDU_LBS_TYPE { get { return "bd09ll"; } }
 
