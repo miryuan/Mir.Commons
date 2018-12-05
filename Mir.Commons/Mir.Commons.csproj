@@ -19,12 +19,12 @@
 一般都是自己时长用到的类库
 网上很多工具类库很多,挺乱的,自己整理了一套,供自己使用</Description>
     <PackageTags />
-    <PackageIconUrl>https://github.com/miryuan/Mir.Commons/blob/master/Mir%E7%B3%BB%E5%88%97%E5%9B%BE%E6%A0%87.jpg</PackageIconUrl>
+    <PackageIconUrl>http://pj6twxl4t.bkt.clouddn.com/MirProjectIcon.jpg</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
