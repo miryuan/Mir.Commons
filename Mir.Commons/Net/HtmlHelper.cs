@@ -98,7 +98,7 @@ namespace Mir.Commons.Net
                 httpWebResponse.Close();
                 return html;
             }
-            catch (Exception e)
+            catch
             {
                 if (currentTry <= MaxTry) GetHtml(url, postData, isPost, cookieContainer);
                 currentTry--;
@@ -140,7 +140,7 @@ namespace Mir.Commons.Net
                 httpWebResponse.Close();
                 return html;
             }
-            catch (Exception e)
+            catch
             {
                 if (currentTry <= MaxTry) GetHtml(url, cookieContainer);
                 currentTry--;
@@ -186,7 +186,7 @@ namespace Mir.Commons.Net
                 currentTry--;
                 return responseStream;
             }
-            catch (Exception e)
+            catch
             {
                 if (currentTry <= MaxTry)
                 {

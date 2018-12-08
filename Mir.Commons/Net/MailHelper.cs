@@ -171,7 +171,7 @@ namespace Mir.Commons.Net
                 if (replyTo != string.Empty)
                 {
                     MailAddress address = new MailAddress(replyTo);
-                    message.ReplyTo = address;
+                    message.ReplyToList.Add(address);
                 }
                 Regex regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
                 for (int i = 0; i < mailAddress.Count; i++)

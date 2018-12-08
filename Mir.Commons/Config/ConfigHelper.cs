@@ -43,10 +43,10 @@ namespace Mir.Commons.Config
         /// </summary>
         private static string _configUrlPostfix = "Url";
 
-        /// <summary>
-        /// 最终修改时间戳
-        /// </summary>
-        private static long _timeStamp = 0L;
+        ///// <summary>
+        ///// 最终修改时间戳
+        ///// </summary>
+        //private static long _timeStamp = 0L;
 
         /// <summary>
         /// 配置外链关键词，例如：AppSettings.Url

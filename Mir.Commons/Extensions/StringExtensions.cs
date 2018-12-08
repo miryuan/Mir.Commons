@@ -285,11 +285,29 @@ namespace Mir.Commons.Extensions
         /// 将字符串转换成对应的枚举类型
         /// </summary>
         /// <param name="value"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <returns>枚举值</returns>
         public static T ToEnum<T>(this string value)
         {
             return (T)Enum.Parse(typeof(T), value);
+        }
+
+        /// <summary>
+        /// 将字符串转换成对应的枚举类型
+        /// </summary>
+        /// <param name="value"></param>
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <param name="defaultValue">转换失败时输出的默认值</param>
+        /// <returns>枚举值</returns>
+        public static T ToEnum<T>(this string value, T defaultValue)
+        {
+            try
+            {
+                return (T)Enum.Parse(typeof(T), value);
+            }
+            catch { }
+
+            return defaultValue;
         }
 
         /// <summary>
