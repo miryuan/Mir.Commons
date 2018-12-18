@@ -16,6 +16,9 @@ using System.Text;
 
 namespace Mir.Commons.Config
 {
+    /// <summary>
+    ///  appsettings.json帮助类
+    /// </summary>
     public class ConfigHelper
     {
         /// <summary>
@@ -176,6 +179,9 @@ namespace Mir.Commons.Config
         }
 
         private static string c_configSection = null;
+        /// <summary>
+        /// 
+        /// </summary>
         public static string ConfigSection
         {
             get { return _configSection; }
@@ -184,6 +190,9 @@ namespace Mir.Commons.Config
 
 
         private static string c_configUrlPostfix = null;
+        /// <summary>
+        /// 
+        /// </summary>
         public static string ConfigUrlPostfix
         {
             get { return _configUrlPostfix; }
@@ -191,12 +200,18 @@ namespace Mir.Commons.Config
         }
 
         private static string c_defaultPath = null;
+        /// <summary>
+        /// 默认路径
+        /// </summary>
         public static string DefaultPath
         {
             get { return _defaultPath; }
             set { c_defaultPath = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static NameValueCollection AppSettings { get; private set; } = new NameValueCollection();
 
         /// <summary>

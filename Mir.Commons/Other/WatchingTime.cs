@@ -17,6 +17,9 @@ namespace Mir.Commons.Other
     public class WatchingTime
     {
         private Stopwatch _watch { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public WatchingTime() => _watch = new Stopwatch();
 
         /// <summary>

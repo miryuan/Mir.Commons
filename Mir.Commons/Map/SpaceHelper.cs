@@ -16,10 +16,21 @@ namespace Mir.Commons.Map
     /// </summary>
     public static class SpaceUtil
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static string BAIDU_LBS_TYPE { get { return "bd09ll"; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static double pi = 3.1415926535897932384626433832795;
+        /// <summary>
+        /// 
+        /// </summary>
         public static double a = 6378245.0;
+        /// <summary>
+        /// 
+        /// </summary>
         public static double ee = 0.00669342162296594323;
 
         /// <summary>
@@ -53,7 +64,7 @@ namespace Mir.Commons.Map
         /// <summary>
         /// 度分秒经纬度(必须含有'°')和数字经纬度转换
         /// </summary>
-        /// <param name="digitalDegree">度分秒经纬度</param>
+        /// <param name="degrees">度分秒经纬度</param>
         /// <return>数字经纬度</return>
         public static double ConvertDegreesToDigital(string degrees)
         {
@@ -90,9 +101,8 @@ namespace Mir.Commons.Map
         /// <summary>
         /// 度分秒经纬度(必须含有'/')和数字经纬度转换
         /// </summary>
-        /// <param name="digitalDegree">度分秒经纬度</param>
-        /// <param name="cflag">分隔符</param>
-        /// <return>数字经纬度</return>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
         public static double ConvertDegreesToDigital_default(string degrees)
         {
             char ch = '/';
@@ -102,9 +112,9 @@ namespace Mir.Commons.Map
         /// <summary>
         /// 度分秒经纬度和数字经纬度转换
         /// </summary>
-        /// <param name="digitalDegree">度分秒经纬度</param>
-        /// <param name="cflag">分隔符</param>
-        /// <return>数字经纬度</return>
+        /// <param name="degrees"></param>
+        /// <param name="cflag"></param>
+        /// <returns></returns>
         public static double ConvertDegreesToDigital(string degrees, char cflag)
         {
             const double num = 60;
@@ -237,6 +247,12 @@ namespace Mir.Commons.Map
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lat"></param>
+        /// <param name="lon"></param>
+        /// <returns></returns>
         public static Gps Transform(double lat, double lon)
         {
             if (IsOutOfChina(lat, lon))
@@ -256,6 +272,12 @@ namespace Mir.Commons.Map
             return new Gps(mgLat, mgLon);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public static double TransformLat(double x, double y)
         {
             double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y
@@ -266,6 +288,12 @@ namespace Mir.Commons.Map
             return ret;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public static double TransformLon(double x, double y)
         {
             double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1
@@ -283,6 +311,11 @@ namespace Mir.Commons.Map
     /// </summary>
     public class Gps
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wgLat"></param>
+        /// <param name="wgLon"></param>
         public Gps(double wgLat, double wgLon)
         {
             this.Lat = wgLat;

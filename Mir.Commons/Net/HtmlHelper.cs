@@ -41,6 +41,9 @@ namespace Mir.Commons.Net
         /// </summary> 
         public static Encoding Encoding { get; set; } = Encoding.GetEncoding("utf-8");
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static int NetworkDelay
         {
             get
@@ -54,6 +57,9 @@ namespace Mir.Commons.Net
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static int MaxTry { get; set; } = 300;
         #endregion
 
@@ -155,12 +161,6 @@ namespace Mir.Commons.Net
         /// <summary>
         /// 获取字符流
         /// </summary>
-        //---------------------------------------------------------------------------------------------------------------
-        // 示例:
-        // System.Net.CookieContainer cookie = new System.Net.CookieContainer(); 
-        // Stream s = HttpHelper.GetStream("http://ptlogin2.qq.com/getimage?aid=15000102&0.43878429697395826", cookie);
-        // picVerify.Image = Image.FromStream(s);
-        //---------------------------------------------------------------------------------------------------------------
         /// <param name="url">地址</param>
         /// <param name="cookieContainer">cookieContainer</param>
         public static Stream GetStream(string url, CookieContainer cookieContainer)
@@ -212,7 +212,7 @@ namespace Mir.Commons.Net
         ///<summary>   
         ///清除HTML标记   
         ///</summary>   
-        ///<param name="NoHTML">包括HTML的源码</param>   
+        ///<param name="Htmlstring">包括HTML的源码</param>   
         ///<returns>已经去除后的文字</returns>   
         public static string NoHTML(string Htmlstring)
         {
@@ -295,6 +295,7 @@ namespace Mir.Commons.Net
         /// <summary>
         /// 匹配页面的图片地址
         /// </summary>
+        /// <param name="HtmlCode"></param>
         /// <param name="imgHttp">要补充的http://路径信息</param>
         public static string GetImgSrc(string HtmlCode, string imgHttp)
         {
@@ -312,6 +313,7 @@ namespace Mir.Commons.Net
         /// 匹配<img src="" />中的图片路径实际链接
         /// </summary>
         /// <param name="ImgString"><img src="" />字符串</param>
+        /// <param name="imgHttp"></param>
         public static string GetImg(string ImgString, string imgHttp)
         {
             string MatchVale = "";
@@ -360,6 +362,8 @@ namespace Mir.Commons.Net
         /// 以POST方式抓取远程页面内容
         /// </summary>
         /// <param name="postData">参数列表</param>
+        /// <param name="encodeType"></param>
+        /// <param name="url"></param>
         public static string Post_Http(string url, string postData, string encodeType)
         {
             string strResult = null;

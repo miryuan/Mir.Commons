@@ -141,7 +141,7 @@ namespace Mir.Commons.Format
         /// <summary> 
         /// 检测含有中文字符串的实际长度 
         /// </summary> 
-        /// <param name="str">字符串</param> 
+        /// <param name="inputData">字符串</param> 
         public static int GetCHZNLength(string inputData)
         {
             System.Text.ASCIIEncoding n = new System.Text.ASCIIEncoding();
@@ -229,17 +229,17 @@ namespace Mir.Commons.Format
         /// </summary>
         /// <param name="strMobile"></param>
         /// <returns></returns>
-        public static bool IsValidMobile(string mobile)
+        public static bool IsValidMobile(string strMobile)
         {
             Regex rx = new Regex(@"^(13|15)\d{9}$", RegexOptions.None);
-            Match m = rx.Match(mobile);
+            Match m = rx.Match(strMobile);
             return m.Success;
         }
 
         /// <summary>
         /// 电话有效性（固话和手机 ）
         /// </summary>
-        /// <param name="strVla"></param>
+        /// <param name="number"></param>
         /// <returns></returns>
         public static bool IsValidPhoneAndMobile(string number)
         {
@@ -337,7 +337,7 @@ namespace Mir.Commons.Format
         /// <summary>
         /// 检查字符串最大长度，返回指定长度的串
         /// </summary>
-        /// <param name="sqlInput">输入字符串</param>
+        /// <param name="inputData">输入字符串</param>
         /// <param name="maxLength">最大长度</param>
         /// <returns></returns>			
         public static string CheckMathLength(string inputData, int maxLength)

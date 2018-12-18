@@ -331,7 +331,7 @@ namespace Mir.Commons.Extensions
         }
 
         /// <summary>
-        // 获取文件字符串的扩展名
+        /// 获取文件字符串的扩展名
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

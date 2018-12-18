@@ -156,6 +156,13 @@ namespace Mir.Commons.Net
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="zYPath"></param>
+        /// <param name="v"></param>
+        /// <param name="ht"></param>
+        /// <returns></returns>
         public static XmlDocument QuerySoapWebService(object zYPath, string v, object ht)
         {
             throw new NotImplementedException();

@@ -17,6 +17,11 @@ namespace Mir.Commons.Format
     /// </summary>
     public static class RMBHelper
     {
+        /// <summary>
+        /// 将Object类型试着转换成数值型,若转换出错,则返回Null
+        /// </summary>
+        /// <param name="decimalObj"></param>
+        /// <returns></returns>
         public static decimal? ParseToDecimalValue(object decimalObj)
         {
             if (decimalObj == null) return null;

@@ -15,6 +15,9 @@ using System.Data;
 
 namespace Mir.Commons.Extensions
 {
+    /// <summary>
+    /// Json扩展
+    /// </summary>
     public static class JsonExtensions
     {
         /// <summary>

@@ -56,6 +56,12 @@ namespace Mir.Commons.Extensions
             return table;
         }
 
+        /// <summary>
+        /// List转DataTable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable ToDataTable<T>(this List<T> list)
         {
             DataTable table = new DataTable();

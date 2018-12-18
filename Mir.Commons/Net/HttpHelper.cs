@@ -26,7 +26,8 @@ namespace Mir.Commons.Net
         /// <param name="url">请求地址</param>
         /// <param name="postData">请求数据</param>
         /// <param name="contentType">application/xml、application/json、application/text、application/x-www-form-urlencoded</param>
-        /// <param name="headers">填充消息头</param>        
+        /// <param name="headers">填充消息头</param>  
+        /// <param name="timeOut"></param>
         /// <returns></returns>
         public static string HttpPost(string url, string postData = null, string contentType = null, int timeOut = 30, Dictionary<string, string> headers = null)
         {
@@ -56,7 +57,8 @@ namespace Mir.Commons.Net
         /// <param name="url">请求地址</param>
         /// <param name="postData">请求数据</param>
         /// <param name="contentType">application/xml、application/json、application/text、application/x-www-form-urlencoded</param>
-        /// <param name="headers">填充消息头</param>        
+        /// <param name="headers">填充消息头</param>     
+        /// <param name="timeOut"></param>
         /// <returns></returns>
         public static async Task<string> HttpPostAsync(string url, string postData = null, string contentType = null, int timeOut = 30, Dictionary<string, string> headers = null)
         {

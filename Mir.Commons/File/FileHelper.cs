@@ -513,6 +513,7 @@ namespace Mir.Commons.File
         /// 取文件名
         /// </summary>
         /// <param name="fullpath"></param>
+        /// <param name="removeExt"></param>
         /// <returns></returns>
         public static string GetFileName(string fullpath, bool removeExt)
         {

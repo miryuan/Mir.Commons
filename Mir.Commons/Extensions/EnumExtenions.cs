@@ -45,6 +45,7 @@ namespace Mir.Commons.Extensions
         /// 获取枚举的说明
         /// </summary>
         /// <param name="split">位枚举的分割符号（仅对位枚举有作用）</param>
+        /// <param name="em">枚举类型</param>
         public static string GetDescriptions(this Enum em, string split = ",")
         {
             var names = em.ToString().Split(',');
@@ -215,16 +216,32 @@ namespace Mir.Commons.Extensions
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public struct EnumModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="um"></param>
         public EnumModel(Enum um)
         {
             this.value = (int)Convert.ChangeType(um, typeof(int));
             this.name = um.ToString();
             this.text = um.GetDescription();
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public int value { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string text { get; set; }
     }
 
@@ -233,6 +250,11 @@ namespace Mir.Commons.Extensions
     /// </summary>
     public struct EnumObject
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="um"></param>
+        /// <param name="picture"></param>
         public EnumObject(Enum um, string picture = null)
         {
             this.ID = (int)Convert.ChangeType(um, typeof(int));
@@ -241,6 +263,11 @@ namespace Mir.Commons.Extensions
             this.Picture = picture;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public EnumObject(int id, string name)
         {
             this.ID = id;
@@ -248,6 +275,13 @@ namespace Mir.Commons.Extensions
             this.Picture = null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="picture"></param>
         public EnumObject(int id, string name, string description, string picture)
         {
             this.ID = id;
@@ -256,11 +290,23 @@ namespace Mir.Commons.Extensions
             this.Picture = picture;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int ID;
+        /// <summary>
+        /// 
+        /// </summary>
 
         public string Name;
+        /// <summary>
+        /// 
+        /// </summary>
 
         public string Description;
+        /// <summary>
+        /// 
+        /// </summary>
 
         public string Picture;
     }
