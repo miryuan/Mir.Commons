@@ -43,6 +43,18 @@ namespace Mir.Commons.Extensions
         }
 
         /// <summary>
+        /// 将字符串转换成Int64
+        /// </summary>
+        /// <param name="value">待转换的字符串</param>
+        /// <param name="defaultValue">转换失败时返回的默认值</param>
+        /// <returns>Int64</returns>
+        public static long ToLong(this string value, long defaultValue)
+        {
+            var result = defaultValue;
+            return long.TryParse(value, out result) ? result : defaultValue;
+        }
+
+        /// <summary>
         /// 将字符串转换成UInt
         /// </summary>
         /// <param name="value">待转换的字符串</param>

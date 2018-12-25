@@ -42,7 +42,7 @@ namespace Mir.Commons.Net
         /// <summary>
         /// 需要WebService支持Post调用
         /// </summary>
-        public static XmlDocument QueryPostWebService(String URL, String MethodName, Hashtable Pars)
+        public static XmlDocument QueryPostWebService(string URL, string MethodName, Hashtable Pars)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URL + "/" + MethodName);
             request.Method = "POST";
@@ -56,7 +56,7 @@ namespace Mir.Commons.Net
         /// <summary>
         /// 需要WebService支持Get调用
         /// </summary>
-        public static XmlDocument QueryGetWebService(String URL, String MethodName, Hashtable Pars)
+        public static XmlDocument QueryGetWebService(string URL, string MethodName, Hashtable Pars)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URL + "/" + MethodName + "?" + ParsToString(Pars));
             request.Method = "GET";
@@ -68,7 +68,7 @@ namespace Mir.Commons.Net
         /// <summary>
         /// 通用WebService调用(Soap),参数Pars为String类型的参数名、参数值
         /// </summary>
-        public static XmlDocument QuerySoapWebService(String URL, String MethodName, Hashtable Pars)
+        public static XmlDocument QuerySoapWebService(string URL, string MethodName, Hashtable Pars)
         {
             if (_xmlNamespaces.ContainsKey(URL))
             {
@@ -80,7 +80,7 @@ namespace Mir.Commons.Net
             }
         }
 
-        private static XmlDocument QuerySoapWebService(String URL, String MethodName, Hashtable Pars, string XmlNs)
+        private static XmlDocument QuerySoapWebService(string URL, string MethodName, Hashtable Pars, string XmlNs)
         {
             _xmlNamespaces[URL] = XmlNs;//加入缓存，提高效率
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URL);
@@ -101,7 +101,7 @@ namespace Mir.Commons.Net
             AddDelaration(doc2);
             return doc2;
         }
-        private static string GetNamespace(String URL)
+        private static string GetNamespace(string URL)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL + "?WSDL");
             SetWebRequest(request);
@@ -113,7 +113,7 @@ namespace Mir.Commons.Net
             return doc.SelectSingleNode("//@targetNamespace").Value;
         }
 
-        private static byte[] EncodeParsToSoap(Hashtable Pars, String XmlNs, String MethodName)
+        private static byte[] EncodeParsToSoap(Hashtable Pars, string XmlNs, string MethodName)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml("<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"></soap:Envelope>");
