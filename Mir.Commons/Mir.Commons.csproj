@@ -21,6 +21,8 @@
     <PackageTags />
     <PackageIconUrl>http://pj6twxl4t.bkt.clouddn.com/MirProjectIcon.jpg</PackageIconUrl>
     <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <FileVersion>1.0.5.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
