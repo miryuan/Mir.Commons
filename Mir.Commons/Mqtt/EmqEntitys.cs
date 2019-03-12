@@ -299,7 +299,7 @@ namespace Mir.Commons.Mqtt
                 PacketsPubrecSent = di.First(c => c.Key == "packets/pubrec/sent").Value.ToInt(0),
                 Packetsunsuback = di.First(c => c.Key == "packets/unsuback").Value.ToInt(0),
                 PacketsSent = di.First(c => c.Key == "packets/sent").Value.ToInt(0),
-                messagesQos1Received = di.First(c => c.Key == "messages/qos1/received").Value.ToInt(0),
+                MessagesQos1Received = di.First(c => c.Key == "messages/qos1/received").Value.ToInt(0),
                 PacketsPingresp = di.First(c => c.Key == "packets/pingresp").Value.ToInt(0),
                 PacketsSuback = di.First(c => c.Key == "packets/suback").Value.ToInt(0),
                 PacketsPubrelReceived = di.First(c => c.Key == "packets/pubrel/received").Value.ToInt(0),
@@ -381,7 +381,7 @@ namespace Mir.Commons.Mqtt
         /// <summary>
         /// 
         /// </summary>
-        public int messagesQos1Received { get; set; }
+        public int MessagesQos1Received { get; set; }
         /// <summary>
         /// 
         /// </summary>

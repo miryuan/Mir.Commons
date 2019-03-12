@@ -25,13 +25,36 @@ namespace Mir.Commons.Extensions
         /// 将Double转换成整型
         /// </summary>
         /// <param name="obj"></param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static int ToInt32(this double obj) => int.Parse(obj.ToString());
+        public static int ToInt32(this double obj, int defaultValue = 0)
+        {
+            try
+            {
+                return int.Parse(obj.ToString());
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
         /// <summary>
         /// 将Double转换成长整型
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public static long ToInt64(this double obj) => long.Parse(obj.ToString());
+
+        /// <summary>
+        /// 转换成百分比字符串
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="position">小数点后保留位数</param>
+        /// <returns></returns>
+        public static string ConvertToPercent(this double obj, ushort position)
+        {
+            return obj.ToString("p" + position).Replace(" ", "");
+        }
     }
 }

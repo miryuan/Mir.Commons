@@ -21,6 +21,24 @@ namespace Mir.Commons.Extensions
     public static class StringExtensions
     {
         /// <summary>
+        /// 提取字符串中的数字
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ExtractDecimal(this string value)
+        {
+            StringBuilder result = new StringBuilder();
+            foreach (char c in value)
+            {
+                if ((Convert.ToInt32(c) >= 48 && Convert.ToInt32(c) <= 57) || Convert.ToInt32(c) == 46)
+                {
+                    result.Append(c);
+                }
+            }
+            return result.ToString();
+        }
+
+        /// <summary>
         /// 将字符串转换成Int32
         /// </summary>
         /// <param name="value">待转换的字符串</param>
@@ -356,6 +374,20 @@ namespace Mir.Commons.Extensions
                 ret = temp[temp.Length - 1];
             }
             return ret;
+        }
+
+        /// <summary>
+        /// 获取Uri字符串的文件扩展名
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string FindUriExtensionName(this string str)
+        {
+            Uri value = new Uri(str);
+            if (value != null && value.Segments != null && value.Segments.Length > 0)
+                return value.Segments[value.Segments.Length - 1];
+            else
+                return "";
         }
 
         /// <summary>
