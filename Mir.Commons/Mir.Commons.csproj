@@ -20,7 +20,7 @@
 网上很多工具类库很多,挺乱的,自己整理了一套,供自己使用</Description>
     <PackageTags />
     <PackageIconUrl>http://pj6twxl4t.bkt.clouddn.com/MirProjectIcon.jpg</PackageIconUrl>
-    <Version>1.0.5</Version>
+    <Version>1.0.7</Version>
     <AssemblyVersion>1.0.5.0</AssemblyVersion>
     <FileVersion>1.0.5.0</FileVersion>
   </PropertyGroup>
