@@ -29,5 +29,19 @@ namespace UnitTest
             string s1 = MD5Helper.MD5("123456");
             string s2 = MD5Helper.FileMD5Buffer("D:\\report_data2.txt");
         }
+
+        [TestMethod]
+        public void TestAscii()
+        {
+            string str = "你hello";
+            byte[] array = new byte[1];
+            array = System.Text.Encoding.Default.GetBytes(str); //把str的每个字符转换成ascii码
+            string textAscii = string.Empty;//用来存储转换过后的ASCII码
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                textAscii += array[i].ToString("X") + " ";
+            }
+        }
     }
 }

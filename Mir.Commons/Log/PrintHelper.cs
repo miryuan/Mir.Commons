@@ -33,20 +33,26 @@ namespace Mir.Commons.Log
         /// </summary>
         /// <param name="message">文本内容</param>
         /// <param name="color">文本颜色,默认灰色</param>
-        public static void PrintLine(string message, ConsoleColor color = ConsoleColor.Gray)
+        /// <param name="isShowTime">是否输出消息发生的时间?默认为 False</param>
+        public static void PrintLine(string message, ConsoleColor color = ConsoleColor.Gray, bool isShowTime = false)
         {
             Console.ForegroundColor = color;
-            Console.WriteLine(message);
+            if (isShowTime)
+                Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff\t") + message);
+            else
+                Console.WriteLine(message);
+
             Console.ResetColor();
         }
 
         /// <summary>
         /// 控制台输出包含时间的文本,输出结束后进行换行
         /// </summary>
+        [Obsolete("建议使用PrintHelper.PrintLine()方法,以参数控制.")]
         public static void PrintLineWithTime(string message, ConsoleColor color = ConsoleColor.Gray)
         {
             Console.ForegroundColor = color;
-            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss:fff\t") + message);
+            Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff\t") + message);
             Console.ResetColor();
         }
 

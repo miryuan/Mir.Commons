@@ -152,7 +152,7 @@ namespace Mir.Commons.Net
             {
                 StringBuilder result = new StringBuilder();
                 FtpWebRequest ftp;
-                ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI));
+                ftp = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI));
                 ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 ftp.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 WebResponse response = ftp.GetResponse();
@@ -218,7 +218,7 @@ namespace Mir.Commons.Net
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(url));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(url));
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpPassword, ftpPassword);
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
@@ -271,7 +271,7 @@ namespace Mir.Commons.Net
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + dirName));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + dirName));
                 reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -295,7 +295,7 @@ namespace Mir.Commons.Net
             long fileSize = 0;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + filename));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + filename));
                 reqFTP.Method = WebRequestMethods.Ftp.GetFileSize;
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -320,7 +320,7 @@ namespace Mir.Commons.Net
             FtpWebRequest reqFTP;
             try
             {
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + currentFilename));
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(ftpURI + currentFilename));
                 reqFTP.Method = WebRequestMethods.Ftp.Rename;
                 reqFTP.RenameTo = newFilename;
                 reqFTP.UseBinary = true;

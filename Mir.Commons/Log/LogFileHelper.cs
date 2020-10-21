@@ -38,9 +38,7 @@ namespace Mir.Commons.Log
         public static void WriteLog(string msg, bool isConsole = false)
         {
             if (isConsole)
-            {
-                PrintHelper.PrintLineWithTime(msg);
-            }
+                PrintHelper.PrintLine(msg, isShowTime: true);
 
             WriteLog(msg, LogType.Info);
         }
@@ -86,11 +84,12 @@ namespace Mir.Commons.Log
         /// </summary>
         /// <param name="ex">异常类</param>
         /// <param name="isConsole">是否打印内容</param>
+        [Obsolete]
         public static void WriteError(Exception ex, bool isConsole = false)
         {
             if (isConsole)
             {
-                PrintHelper.PrintLineWithTime(ex.Message, ConsoleColor.Red);
+                PrintHelper.PrintLine(ex.Message, ConsoleColor.Red, true);
             }
 
             WriteError(ex, LogPath);
@@ -115,9 +114,7 @@ namespace Mir.Commons.Log
         public static void WriteError(string errMsg, bool isConsole = false)
         {
             if (isConsole)
-            {
-                PrintHelper.PrintLineWithTime(errMsg, ConsoleColor.Red);
-            }
+                PrintHelper.PrintLine(errMsg, ConsoleColor.Red, true);
 
             WriteLog(errMsg, LogPath, LogType.Error);
         }
@@ -183,7 +180,7 @@ namespace Mir.Commons.Log
         private static string FormatMsg(string msg, LogType logType)
         {
             string result;
-            string header = string.Format("[{0}][{1} {2}] ", logType.ToString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString());
+            string header = string.Format("[{0}][{1}] ", logType.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             result = header + msg;
             return result;
         }
